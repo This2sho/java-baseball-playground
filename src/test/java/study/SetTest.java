@@ -32,7 +32,7 @@ public class SetTest {
 
 	@ParameterizedTest(name = "Set에 {index} 포함되는지 테스트")
 	@ValueSource(ints = {1, 2, 3})
-	public void setTest(int number) {
+	public void setContainsTest(int number) {
 		assertThat(numbers.contains(number)).isTrue();
 	}
 }

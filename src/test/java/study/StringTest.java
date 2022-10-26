@@ -47,5 +47,4 @@ public class StringTest {
 				given.charAt(3))
 				.isInstanceOf(IndexOutOfBoundsException.class);
 	}
-
 }

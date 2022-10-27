@@ -56,4 +56,26 @@ public class Calculator {
 			throw new IllegalStateException("잘못된 형식의 입력입니다.");
 		}
 	}
+
+	public int calculate() {
+		return calculate(0, numbers.get(0));
+	}
+
+	private int calculate(int idx, int result) {
+		if (idx == operators.size()) {
+			return result;
+		}
+
+		Character op = operators.get(idx++);
+		if (op == '+') {
+			return calculate(idx, result + numbers.get(idx));
+		}
+		if (op == '-') {
+			return calculate(idx, result - numbers.get(idx));
+		}
+		if (op == '*') {
+			return calculate(idx, result * numbers.get(idx));
+		}
+		return calculate(idx, result / numbers.get(idx));
+	}
 }

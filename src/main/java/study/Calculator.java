@@ -1,10 +1,12 @@
-import java.util.Arrays;
+package study;
+
 import java.util.LinkedList;
 import java.util.List;
 
 public class Calculator {
 	private final List<Integer> numbers;
-	private final List<Character> operators;
+	private final List<String> operators;
+	public static final String OPERATORS = "+-*/";
 
 	Calculator(String input) {
 		String[] inputs = input.split(" ");
@@ -44,14 +46,12 @@ public class Calculator {
 	}
 
 	private void addOperator(String operator) {
-		char op = operator.charAt(0);
-		validateOperator(op);
-		operators.add(op);
+		validateOperator(operator);
+		operators.add(operator);
 	}
 
-	private void validateOperator(char op) {
-		char[] OPERATORS = {'+', '-', '*', '/'};
-		boolean doContain = Arrays.asList(OPERATORS).contains(op);
+	private void validateOperator(String operator) {
+		boolean doContain = OPERATORS.contains(operator);
 		if (!doContain) {
 			throw new IllegalStateException("잘못된 형식의 입력입니다.");
 		}
@@ -66,14 +66,14 @@ public class Calculator {
 			return result;
 		}
 
-		Character op = operators.get(idx++);
-		if (op == '+') {
+		String op = operators.get(idx++);
+		if (op.equals("+")) {
 			return calculate(idx, result + numbers.get(idx));
 		}
-		if (op == '-') {
+		if (op.equals("-")) {
 			return calculate(idx, result - numbers.get(idx));
 		}
-		if (op == '*') {
+		if (op.equals("*")) {
 			return calculate(idx, result * numbers.get(idx));
 		}
 		return calculate(idx, result / numbers.get(idx));

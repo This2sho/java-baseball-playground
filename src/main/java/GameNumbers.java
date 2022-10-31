@@ -34,26 +34,8 @@ public class GameNumbers {
 			strikeCount += checkStrike(i, otherNumber);
 			ballCount += checkBall(i, otherNumber);
 		}
-		printMessage(ballCount, strikeCount);
+		ResultView.printMessage(ballCount, strikeCount);
 		return strikeCount == NUMBER_SIZE;
-	}
-
-	private void printMessage(int ballCount, int strikeCount) {
-		if (strikeCount == NUMBER_SIZE) {
-			System.out.println("3스트라이크");
-			return;
-		}
-		if (ballCount == 0 && strikeCount == 0) {
-			System.out.println("낫싱");
-			return;
-		}
-		if (ballCount > 0) {
-			System.out.print(ballCount + "볼 ");
-		}
-		if (strikeCount > 0) {
-			System.out.print(strikeCount + "스트라이크");
-		}
-		System.out.println();
 	}
 
 	private int get(int idx) {
